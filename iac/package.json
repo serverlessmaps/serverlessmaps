@@ -1,0 +1,14 @@
+{
+  "name": "serverlessmaps",
+  "version": "0.1.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "serverless-iam-roles-per-function": "^3.2.0",
+    "serverless-s3-sync": "^3.1.0"
+  }
+}

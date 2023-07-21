@@ -1,0 +1,41 @@
+Resources:
+
+  WebsiteBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: ${self:custom.s3.buckets.website}
+
+  # S3 bucket for storing the raw data (no notifications enabled)
+  TileBucket:
+    Type: 'AWS::S3::Bucket'
+    Properties:
+      BucketName: ${self:custom.s3.buckets.tiles}
+
+  # S3 bucket policy for the CloudFront origin access identity
+  WebsiteBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket:
+        Ref: WebsiteBucket
+      PolicyDocument:
+        Statement:
+          - Sid: PublicReadGetObject
+            Effect: Allow
+            Principal:
+              AWS:
+                Fn::Join:
+                  - ' '
+                  - - 'arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity'
+                    - !Ref 'CloudFrontOriginAccessIdentity'
+            Action:
+              - s3:GetObject
+            Resource:
+              - Fn::Join: [
+                  '', [
+                    'arn:aws:s3:::',
+                    {
+                      'Ref': 'WebsiteBucket'
+                    },
+                    '/*'
+                  ]
+                ]

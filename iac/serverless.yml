@@ -1,0 +1,64 @@
+service: serverlessmaps
+
+frameworkVersion: '3'
+
+plugins:
+  - serverless-s3-sync
+  - serverless-iam-roles-per-function
+
+custom:
+
+  # S3 buckets
+  s3:
+    buckets:
+      website: '${self:service}-website-${self:provider.stage}'
+      tiles: '${self:service}-tiles-${self:provider.stage}'
+
+  # Prune plugin
+  prune:
+    automatic: true
+    number: 3
+
+  # S3 sync plugin configuration
+  s3Sync:
+    - bucketName: ${self:custom.s3.buckets.tiles}
+      bucketPrefix: tiles/
+      localDir: ../data/tiles
+    - bucketName: ${self:custom.s3.buckets.website}
+      localDir: ../website
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ${opt:region, 'us-east-1'}
+  stage: ${opt:stage, 'prd'}
+  logRetentionInDays: 7
+  environment:
+    AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1' # Enable HTTP keep-alive connections for the AWS SDK
+    STAGE: '${self:provider.stage}'
+    LOG_LEVEL: 'debug'
+
+functions:
+  protomaps:
+    handler: functions/protomaps.handler
+    memorySize: 1024
+    timeout: 15
+    url: true
+    environment:
+      BUCKET: ${self:custom.s3.buckets.tiles}
+      CORS: '*'
+      #TILE_PATH: ''
+    iamRoleStatements:
+      - Effect: Allow
+        Action:
+          - s3:GetObject
+        Resource: 'arn:aws:s3:::${self:custom.s3.buckets.tiles}/*'
+
+resources:
+
+  - ${file(resources/s3-buckets.yml)}
+  - ${file(resources/cf-distribution.yml)}
+  - ${file(resources/outputs.yml)}
+
+package:
+  individually: true

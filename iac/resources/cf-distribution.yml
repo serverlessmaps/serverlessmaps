@@ -1,0 +1,85 @@
+Resources:
+  CloudFrontOriginAccessIdentity:
+    Type: 'AWS::CloudFront::CloudFrontOriginAccessIdentity'
+    Properties:
+      CloudFrontOriginAccessIdentityConfig:
+        Comment: '${self:service}-oai'
+
+  WebsiteDistribution:
+    Type: 'AWS::CloudFront::Distribution'
+    Properties:
+      DistributionConfig:
+        Origins:
+          - DomainName: !GetAtt WebsiteBucket.DomainName
+            OriginPath: ''
+            Id: S3BucketOrigin
+            S3OriginConfig:
+              OriginAccessIdentity:
+                Fn::Join:
+                  - ''
+                  - - 'origin-access-identity/cloudfront/'
+                    - !Ref CloudFrontOriginAccessIdentity
+        DefaultCacheBehavior:
+          Compress: True
+          AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+          TargetOriginId: S3BucketOrigin
+          ForwardedValues:
+            QueryString: false
+            Cookies:
+              Forward: none
+          ViewerProtocolPolicy: redirect-to-https
+        Enabled: true
+        HttpVersion: 'http2'
+        PriceClass: 'PriceClass_All'
+
+  # See https://github.com/mgorski-mg/cloud-front-patterns/blob/master/infrastructure/cloud-front-headers.yaml
+  TilesResponseHeaderPolicy:
+    Type: AWS::CloudFront::ResponseHeadersPolicy
+    Properties: 
+      ResponseHeadersPolicyConfig:
+        Name: TilesResponseConfig
+        CorsConfig:
+          OriginOverride: True
+          AccessControlAllowCredentials: False
+          AccessControlAllowHeaders: 
+            Items: 
+              - '*'
+          AccessControlAllowMethods: 
+            Items: 
+              - 'GET'
+          AccessControlAllowOrigins: 
+            Items: 
+              - '*'
+  
+  TilesDistribution:
+    Type: 'AWS::CloudFront::Distribution'
+    Properties:
+      DistributionConfig:
+        Origins:
+          - Id: LambdaFunctionOrigin
+            DomainName: !Select [2, !Split ["/", !GetAtt ProtomapsLambdaFunctionUrl.FunctionUrl]]
+            OriginPath: ''
+            CustomOriginConfig:
+              HTTPSPort: 443
+              OriginKeepaliveTimeout: 60
+              OriginProtocolPolicy: https-only
+        DefaultCacheBehavior:
+          Compress: True
+          MinTTL: 86400
+          AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+          ForwardedValues:
+            QueryString: false
+            Cookies:
+              Forward: none
+          ResponseHeadersPolicyId: !Ref TilesResponseHeaderPolicy
+          TargetOriginId: LambdaFunctionOrigin
+          ViewerProtocolPolicy: redirect-to-https
+        Enabled: true
+        HttpVersion: 'http3'
+        PriceClass: 'PriceClass_All'

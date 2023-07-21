@@ -1,0 +1,10 @@
+Outputs:
+  CloudFrontDistributionId:
+    Description: Website CloudFront distribution id
+    Value: !Ref WebsiteDistribution
+  CloudFrontDistributionDomainName:
+    Description: Website CloudFront distribution domain name
+    Value: !GetAtt 'WebsiteDistribution.DomainName'
+  TilesDistributionDomainName:
+    Description: Tiles CloudFront distribution domain name
+    Value: !GetAtt 'TilesDistribution.DomainName'
