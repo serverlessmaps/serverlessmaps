@@ -1,2 +1,4 @@
 # serverlessmaps
-Creating and hosting serverless maps
+Creating and hosting serverless maps on AWS.
+
+

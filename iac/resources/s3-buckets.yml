@@ -1,15 +1,12 @@
 Resources:
 
+  # S3 bucket for storing the website
   WebsiteBucket:
     Type: 'AWS::S3::Bucket'
-    Properties:
-      BucketName: ${self:custom.s3.buckets.website}
 
-  # S3 bucket for storing the raw data (no notifications enabled)
+  # S3 bucket for storing the tiles
   TileBucket:
     Type: 'AWS::S3::Bucket'
-    Properties:
-      BucketName: ${self:custom.s3.buckets.tiles}
 
   # S3 bucket policy for the CloudFront origin access identity
   WebsiteBucketPolicy:

@@ -3,28 +3,39 @@ service: serverlessmaps
 frameworkVersion: '3'
 
 plugins:
-  - serverless-s3-sync
   - serverless-iam-roles-per-function
+  - serverless-esbuild
+  - serverless-stack-output
+  - serverless-s3-sync
 
 custom:
 
-  # S3 buckets
-  s3:
-    buckets:
-      website: '${self:service}-website-${self:provider.stage}'
-      tiles: '${self:service}-tiles-${self:provider.stage}'
+  cors:
+    allowedDomain: ${opt:cors, '*'}
 
   # Prune plugin
   prune:
     automatic: true
     number: 3
 
+  # esbuild plugin
+  esbuild:
+    bundle: true
+    minify: false
+    exclude:
+      - '@aws-sdk/client-s3'
+      - '@aws-sdk/node-http-handler'
+
+  # Output plugin (for writing the CloudFront Distribution URLs to the website config)
+  output:
+    handler: scripts/output.handler
+    file: scripts/outputs.json
+
   # S3 sync plugin configuration
   s3Sync:
-    - bucketName: ${self:custom.s3.buckets.tiles}
-      bucketPrefix: tiles/
+    - bucketNameKey: TileBucketName
       localDir: ../data/tiles
-    - bucketName: ${self:custom.s3.buckets.website}
+    - bucketNameKey: WebsiteBucketName
       localDir: ../website
 
 provider:
@@ -39,20 +50,23 @@ provider:
     LOG_LEVEL: 'debug'
 
 functions:
-  protomaps:
-    handler: functions/protomaps.handler
-    memorySize: 1024
+  pmTilesProxy:
+    handler: functions/pmTilesProxy.handler
+    architecture: arm64
+    memorySize: 512
     timeout: 15
     url: true
+    # See https://protomaps.com/docs/cdn/aws#configuration
     environment:
-      BUCKET: ${self:custom.s3.buckets.tiles}
-      CORS: '*'
-      #TILE_PATH: ''
+      BUCKET: !Ref TileBucket
+      CORS: '${self:custom.cors.allowedDomain}'
+      # Can only be use with a real domain
+      # PUBLIC_HOSTNAME: !GetAtt 'TilesDistribution.DomainName'
     iamRoleStatements:
       - Effect: Allow
         Action:
           - s3:GetObject
-        Resource: 'arn:aws:s3:::${self:custom.s3.buckets.tiles}/*'
+        Resource: !Sub 'arn:aws:s3:::${TileBucket}/*'
 
 resources:
 

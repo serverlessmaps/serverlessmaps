@@ -36,11 +36,11 @@ Resources:
         PriceClass: 'PriceClass_All'
 
   # See https://github.com/mgorski-mg/cloud-front-patterns/blob/master/infrastructure/cloud-front-headers.yaml
-  TilesResponseHeaderPolicy:
+  PMTilesResponseHeaderPolicy:
     Type: AWS::CloudFront::ResponseHeadersPolicy
     Properties: 
       ResponseHeadersPolicyConfig:
-        Name: TilesResponseConfig
+        Name: PMTilesResponseHeaders
         CorsConfig:
           OriginOverride: True
           AccessControlAllowCredentials: False
@@ -60,7 +60,7 @@ Resources:
       DistributionConfig:
         Origins:
           - Id: LambdaFunctionOrigin
-            DomainName: !Select [2, !Split ["/", !GetAtt ProtomapsLambdaFunctionUrl.FunctionUrl]]
+            DomainName: !Select [2, !Split ["/", !GetAtt PmTilesProxyLambdaFunctionUrl.FunctionUrl]]
             OriginPath: ''
             CustomOriginConfig:
               HTTPSPort: 443
@@ -77,7 +77,7 @@ Resources:
             QueryString: false
             Cookies:
               Forward: none
-          ResponseHeadersPolicyId: !Ref TilesResponseHeaderPolicy
+          ResponseHeadersPolicyId: !Ref PMTilesResponseHeaderPolicy
           TargetOriginId: LambdaFunctionOrigin
           ViewerProtocolPolicy: redirect-to-https
         Enabled: true

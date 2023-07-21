@@ -1,4 +1,10 @@
 Outputs:
+  WebsiteBucketName:
+    Description: Website S3 bucket name
+    Value: !Ref WebsiteBucket
+  TileBucketName:
+    Description: Tile S3 bucket name
+    Value: !Ref TileBucket
   CloudFrontDistributionId:
     Description: Website CloudFront distribution id
     Value: !Ref WebsiteDistribution
@@ -8,3 +14,6 @@ Outputs:
   TilesDistributionDomainName:
     Description: Tiles CloudFront distribution domain name
     Value: !GetAtt 'TilesDistribution.DomainName'
+  Region:
+    Description: 'The AWS region the stack is deployed to'
+    Value: '${self:provider.region}'

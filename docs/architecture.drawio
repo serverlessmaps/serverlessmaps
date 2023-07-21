@@ -1,0 +1,133 @@
+<mxfile host="65bd71144e" pages="2">
+    <diagram id="diagramid" name="Diagram">
+        <mxGraphModel dx="1765" dy="613" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="6" value="PmTilesProxyLambdaFunction" style="outlineConnect=0;fontColor=#B3B3B3;gradientColor=#F78E04;gradientDirection=north;fillColor=#D05C17;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" parent="1" vertex="1">
+                    <mxGeometry x="500" y="425" width="50" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="PmTilesProxyLambdaFunctionUrl" style="outlineConnect=0;fontColor=#B3B3B3;gradientColor=#F78E04;gradientDirection=north;fillColor=#D05C17;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="550" width="50" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="PmTilesProxyLambdaPermissionFnUrl" style="outlineConnect=0;fontColor=#B3B3B3;gradientColor=#F54749;gradientDirection=north;fillColor=#C7131F;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.policy;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="240" width="50" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="PmTilesProxyIamRoleLambdaExecution" style="outlineConnect=0;fontColor=#B3B3B3;gradientColor=#F54749;gradientDirection=north;fillColor=#C7131F;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.role;" parent="1" vertex="1">
+                    <mxGeometry x="750" y="475" width="50" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="WebsiteBucket" style="outlineConnect=0;fontColor=#B3B3B3;gradientColor=#60A337;gradientDirection=north;fillColor=#277116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" parent="1" vertex="1">
+                    <mxGeometry x="250" width="50" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="TileBucket" style="outlineConnect=0;fontColor=#B3B3B3;gradientColor=#60A337;gradientDirection=north;fillColor=#277116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" parent="1" vertex="1">
+                    <mxGeometry x="1000" y="437.5" width="50" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="WebsiteBucketPolicy" style="outlineConnect=0;fontColor=#B3B3B3;gradientColor=#60A337;gradientDirection=north;fillColor=#277116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" parent="1" vertex="1">
+                    <mxGeometry width="50" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="CloudFrontOriginAccessIdentity" style="outlineConnect=0;fontColor=#B3B3B3;gradientColor=#945DF2;gradientDirection=north;fillColor=#5A30B5;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudfront;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="100" width="50" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="WebsiteDistribution" style="outlineConnect=0;fontColor=#B3B3B3;gradientColor=#945DF2;gradientDirection=north;fillColor=#5A30B5;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudfront;" parent="1" vertex="1">
+                    <mxGeometry y="100" width="50" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="PMTilesResponseHeaderPolicy" style="outlineConnect=0;fontColor=#B3B3B3;gradientColor=#945DF2;gradientDirection=north;fillColor=#5A30B5;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudfront;" parent="1" vertex="1">
+                    <mxGeometry x="200" y="360" width="50" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="TilesDistribution" style="outlineConnect=0;fontColor=#B3B3B3;gradientColor=#945DF2;gradientDirection=north;fillColor=#5A30B5;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.cloudfront;" parent="1" vertex="1">
+                    <mxGeometry y="500" width="50" height="50" as="geometry"/>
+                </mxCell>
+                <mxCell id="TileBucket|PmTilesProxyLambdaFunction" value="Variable" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=none;fontColor=#EA6B66;noEdgeStyle=1;orthogonal=1;" parent="1" source="6" target="12" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="564" y="450"/>
+                            <mxPoint x="650" y="425"/>
+                            <mxPoint x="900" y="425"/>
+                            <mxPoint x="988" y="452.5"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PmTilesProxyIamRoleLambdaExecution|PmTilesProxyLambdaFunction" value="Role" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=none;fontColor=#EA6B66;noEdgeStyle=1;orthogonal=1;" parent="1" source="6" target="10" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="562" y="463.3333333333333"/>
+                            <mxPoint x="738" y="500"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PmTilesProxyLambdaFunction|PmTilesProxyLambdaFunctionUrl" value="TargetFunctionArn" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=none;fontColor=#EA6B66;noEdgeStyle=1;orthogonal=1;" parent="1" source="8" target="6" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="312" y="575"/>
+                            <mxPoint x="488" y="463.3333333333333"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PmTilesProxyLambdaFunction|PmTilesProxyLambdaPermissionFnUrl" value="FunctionName" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=none;fontColor=#EA6B66;noEdgeStyle=1;orthogonal=1;" parent="1" source="9" target="6" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="312" y="375"/>
+                            <mxPoint x="486" y="450"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="TileBucket|PmTilesProxyIamRoleLambdaExecution" value="PolicyDocument" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=none;fontColor=#EA6B66;noEdgeStyle=1;orthogonal=1;" parent="1" source="10" target="12" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="812" y="500"/>
+                            <mxPoint x="988" y="472.5"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="WebsiteBucket|WebsiteBucketPolicy" value="Bucket&#10;Resource" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=none;fontColor=#EA6B66;noEdgeStyle=1;orthogonal=1;" parent="1" source="13" target="11" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="62" y="15"/>
+                            <mxPoint x="238" y="15"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="CloudFrontOriginAccessIdentity|WebsiteBucketPolicy" value="AWS" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=none;fontColor=#EA6B66;noEdgeStyle=1;orthogonal=1;" parent="1" source="13" target="14" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="62" y="35"/>
+                            <mxPoint x="238" y="115"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="CloudFrontOriginAccessIdentity|WebsiteDistribution" value="OriginAccessIdentity" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=none;fontColor=#EA6B66;noEdgeStyle=1;orthogonal=1;" parent="1" source="15" target="14" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="62" y="135"/>
+                            <mxPoint x="238" y="135"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="WebsiteBucket|WebsiteDistribution" value="DomainName" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=none;fontColor=#EA6B66;noEdgeStyle=1;orthogonal=1;" parent="1" source="15" target="11" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="62" y="115"/>
+                            <mxPoint x="238" y="35"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PMTilesResponseHeaderPolicy|TilesDistribution" value="ResponseHeadersPolicyId" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=none;fontColor=#EA6B66;noEdgeStyle=1;orthogonal=1;" parent="1" source="17" target="16" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="62" y="515"/>
+                            <mxPoint x="238" y="475"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="PmTilesProxyLambdaFunctionUrl|TilesDistribution" value="DomainName" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=none;fontColor=#EA6B66;noEdgeStyle=1;orthogonal=1;" parent="1" source="17" target="8" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="62" y="535"/>
+                            <mxPoint x="238" y="575"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
