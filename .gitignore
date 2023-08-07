@@ -130,7 +130,6 @@ dist
 .pnp.*
 
 iac/.serverless
-iac/scripts/output.js
 iac/scripts/outputs.json
 website/urlConfig.js
 
