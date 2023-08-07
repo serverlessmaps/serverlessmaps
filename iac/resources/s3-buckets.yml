@@ -19,20 +19,8 @@ Resources:
           - Sid: PublicReadGetObject
             Effect: Allow
             Principal:
-              AWS:
-                Fn::Join:
-                  - ' '
-                  - - 'arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity'
-                    - !Ref 'CloudFrontOriginAccessIdentity'
+              AWS: !Join [' ', ['arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity', !Ref CloudFrontOriginAccessIdentity]]
             Action:
               - s3:GetObject
             Resource:
-              - Fn::Join: [
-                  '', [
-                    'arn:aws:s3:::',
-                    {
-                      'Ref': 'WebsiteBucket'
-                    },
-                    '/*'
-                  ]
-                ]
+              - !Sub 'arn:aws:s3:::${WebsiteBucket}/*'

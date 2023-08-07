@@ -14,11 +14,8 @@ Resources:
             OriginPath: ''
             Id: S3BucketOrigin
             S3OriginConfig:
-              OriginAccessIdentity:
-                Fn::Join:
-                  - ''
-                  - - 'origin-access-identity/cloudfront/'
-                    - !Ref CloudFrontOriginAccessIdentity
+              OriginAccessIdentity: !Join ['', ['origin-access-identity/cloudfront/', !Ref CloudFrontOriginAccessIdentity]]
+        DefaultRootObject: index.html
         DefaultCacheBehavior:
           Compress: True
           AllowedMethods:
@@ -41,6 +38,11 @@ Resources:
     Properties: 
       ResponseHeadersPolicyConfig:
         Name: PMTilesResponseHeaders
+        CustomHeadersConfig:
+          Items:
+            - Header: 'Cache-Control'
+              Value: 'public, max-age=86400'
+              Override: True
         CorsConfig:
           OriginOverride: True
           AccessControlAllowCredentials: False
@@ -60,7 +62,7 @@ Resources:
       DistributionConfig:
         Origins:
           - Id: LambdaFunctionOrigin
-            DomainName: !Select [2, !Split ["/", !GetAtt PmTilesProxyLambdaFunctionUrl.FunctionUrl]]
+            DomainName: !Select [2, !Split ['/', !GetAtt PmTilesProxyLambdaFunctionUrl.FunctionUrl]]
             OriginPath: ''
             CustomOriginConfig:
               HTTPSPort: 443
