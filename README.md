@@ -35,7 +35,7 @@ to install the dependencies needed to build the basemaps as PMTiles file. This w
 
 If your system is not using MacOS, you can also install those two dependencies manually.
 
-The next step is the to compile the Planetiler build profile, that later can generate the PMTiles file:
+The next step is to compile the Planetiler build profile, that later can generate the PMTiles file:
 
 ```bash
 scripts/compile_basemaps_builder.sh
