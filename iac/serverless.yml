@@ -35,6 +35,8 @@ custom:
   s3Sync:
     - bucketNameKey: TileBucketName
       localDir: ../data/tiles
+      # Keep other uploaded files in S3, instead of deleting them on sync
+      deleteRemoved: false
     - bucketNameKey: WebsiteBucketName
       localDir: ../website
 

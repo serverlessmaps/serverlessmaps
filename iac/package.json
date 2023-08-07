@@ -14,8 +14,9 @@
   },
   "private": true,
   "scripts": {
-    "invalidate:website": "node scripts/invalidatewebsite.js",
-    "create:diagram": "cfn-dia d -c -t .serverless/cloudformation-template-update-stack.json -o ../docs/architecture.drawio",
+    "website:invalidate": "node scripts/invalidatewebsite.js",
+    "website:sync": "sls s3sync",
+    "diagram:create": "cfn-dia d -c -t .serverless/cloudformation-template-update-stack.json -o ../docs/architecture.drawio",
     "tsc": "tsc --noEmit --watch",
     "build:manual": "esbuild src/index.ts --target=es2020 --outfile=dist/index.mjs --format=esm --bundle --platform=node --target=node18 --external:@aws-sdk/client-s3 --external:@aws-sdk/node-http-handler --banner:js=//$(git describe --always) && cd dist && zip lambda_function.zip index.mjs"
   },
