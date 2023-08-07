@@ -132,5 +132,10 @@ dist
 iac/.serverless
 iac/scripts/outputs.json
 website/urlConfig.js
+website/tilePath.js
+
+data/tiles/*.pmtiles
+
+builder/
 
 .DS_Store

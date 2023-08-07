@@ -7,6 +7,7 @@
         <script src="https://unpkg.com/leaflet-hash@0.2.1/leaflet-hash.js"></script>
         <script src="https://unpkg.com/protomaps@latest/dist/protomaps.min.js"></script>
         <script src="urlConfig.js"></script>
+        <script src="tilePath.js"></script>
         <style>
             body, #map {
                 height:100vh;
@@ -20,7 +21,7 @@
             const map = L.map('map')
             let hash = new L.Hash(map)
             if (!window.location.hash) map.setView(new L.LatLng(53.558572,9.9278215),12)
-            var layer = protomaps.leafletLayer({url:'https://' + tilesDistributionHostname + '/hamburg/{z}/{x}/{y}.mvt'})
+            var layer = protomaps.leafletLayer({url:'https://' + tilesDistributionHostname + '/' + tilePath + '/{z}/{x}/{y}.mvt'})
             layer.addTo(map)
             layer.addInspector(map)
         </script>
