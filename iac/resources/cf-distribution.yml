@@ -52,9 +52,10 @@ Resources:
           AccessControlAllowMethods: 
             Items: 
               - 'GET'
+              - 'OPTIONS'
           AccessControlAllowOrigins: 
             Items: 
-              - '*'
+              - '${self:custom.cors.allowedDomain}'
   
   TilesDistribution:
     Type: 'AWS::CloudFront::Distribution'
