@@ -11,7 +11,7 @@ plugins:
 custom:
 
   cors:
-    allowedDomain: ${opt:cors, '*'}
+    allowedDomain: ${env:CORS, '*'}
 
   # Prune plugin
   prune:
@@ -43,8 +43,8 @@ custom:
 provider:
   name: aws
   runtime: nodejs18.x
-  region: ${opt:region, 'us-east-1'}
-  stage: ${opt:stage, 'prd'}
+  region: ${env:REGION, 'us-east-1'}
+  stage: ${env:STAGE, 'prd'}
   logRetentionInDays: 7
   environment:
     AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1' # Enable HTTP keep-alive connections for the AWS SDK

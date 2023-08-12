@@ -71,16 +71,16 @@ sls deploy
 
 to deploy the necessary stack.
 
-You can customize some parameters for the deployment:
+You can customize some parameters for the deployment via environment variables passed to the `sls deploy` script:
 
-* `region`: The AWS region you want to deploy your stack to (default: `us-east-1`)
-* `stage`: The stage name (default: `prd`) 
-* `cors`: The allowed hostname for the CORS header (default: `*`)
+* `REGION`: The AWS region you want to deploy your stack to (default: `us-east-1`)
+* `STAGE`: The stage name (default: `prd`) 
+* `CORS`: The allowed hostname for the CORS header (default: `*`)
 
 The following will deploy the stack to the `eu-central-1` region with the stage name `dev` and the allowed CORS hostname `mymapservice.xyz`:
 
 ```bash
-sls deploy --region eu-central-1 --stage dev --cors mymapservice.xyz
+ REGION=eu-central-1 STAGE=dev CORS=mymapservice.xyz sls deploy
 ```
 
 #### Stack output
