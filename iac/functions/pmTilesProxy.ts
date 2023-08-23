@@ -22,6 +22,7 @@ import {
 } from "./utils/shared";
   
 import zlib from "zlib";
+import { createHash } from "crypto"
 
 import { S3Client, GetObjectCommand } from "@aws-sdk/client-s3";
 import { NodeHttpHandler } from "@aws-sdk/node-http-handler";
@@ -214,6 +215,9 @@ export const handlerRaw = async (
         data = tilePostprocess(data, header.tileType);
       }
 
+      headers["Cache-Control"] = `public, max-age=${process.env.CACHE_MAX_AGE || 86400}`;
+      headers["ETag"] = `"${createHash("sha256").update(Buffer.from(data)).digest("hex")}"`
+
       if (is_api_gateway) {
         // this is wasted work, but we need to force API Gateway to interpret the Lambda response as binary
         // without depending on clients sending matching Accept: headers in the request.
@@ -243,7 +247,6 @@ export const handlerRaw = async (
     }
     throw e;
   }
-  return apiResp(404, "Invalid URL", false, headers);
 };
 
 export const handler = async (
