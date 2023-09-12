@@ -28,9 +28,34 @@ Resources:
             Cookies:
               Forward: none
           ViewerProtocolPolicy: redirect-to-https
+          ResponseHeadersPolicyId: !Ref WebsiteResponseHeaderPolicy
         Enabled: true
         HttpVersion: 'http2'
         PriceClass: 'PriceClass_All'
+
+  WebsiteResponseHeaderPolicy:
+    Type: AWS::CloudFront::ResponseHeadersPolicy
+    Properties: 
+      ResponseHeadersPolicyConfig:
+        Name: WebsiteResponseHeaders
+        CustomHeadersConfig:
+          Items:
+            - Header: 'Cache-Control'
+              Value: 'public, max-age=86400'
+              Override: True
+        CorsConfig:
+          OriginOverride: True
+          AccessControlAllowCredentials: False
+          AccessControlAllowHeaders: 
+            Items: 
+              - '*'
+          AccessControlAllowMethods: 
+            Items: 
+              - 'GET'
+              - 'OPTIONS'
+          AccessControlAllowOrigins: 
+            Items: 
+              - '*'
 
   # See https://github.com/mgorski-mg/cloud-front-patterns/blob/master/infrastructure/cloud-front-headers.yaml
   PMTilesResponseHeaderPolicy:
@@ -56,6 +81,7 @@ Resources:
           AccessControlAllowOrigins: 
             Items: 
               - '${self:custom.cors.allowedDomain}'
+              - 'http://localhost:3000'
   
   TilesDistribution:
     Type: 'AWS::CloudFront::Distribution'
